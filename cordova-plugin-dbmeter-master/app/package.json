@@ -1,0 +1,23 @@
+{
+  "name": "org.apache.cordova.dbmeterdemo",
+  "version": "1.0.0",
+  "displayName": "DBMeterDemo",
+  "cordova": {
+    "platforms": [
+      "ios"
+    ],
+    "plugins": {
+      "cordova-plugin-test-framework": {},
+      "cordova-plugin-dbmeter-tests": {},
+      "cordova-plugin-add-swift-support": {},
+      "cordova-plugin-dbmeter": {}
+    }
+  },
+  "dependencies": {
+    "cordova-ios": "^4.5.4",
+    "cordova-plugin-add-swift-support": "^1.7.1",
+    "cordova-plugin-dbmeter": "^2.1.0",
+    "cordova-plugin-dbmeter-tests": "file:../plugin/tests",
+    "cordova-plugin-test-framework": "^1.1.6"
+  }
+}

@@ -1,0 +1,4 @@
+https://cordova.apache.org/docs/en/2.5.0/cordova/notification/notification.html
+
+
+<uses-permission android:name="android.permission.VIBRATE" />
