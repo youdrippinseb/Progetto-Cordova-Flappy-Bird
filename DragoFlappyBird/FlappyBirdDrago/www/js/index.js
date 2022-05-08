@@ -32,18 +32,9 @@ var jumping = 0;
 var counter = 0;
 
 function onDeviceReady() {
-
-    
     // Cordova is now initialized. Have fun!
-
     console.log('Running cordova-' + cordova.platformId + '@' + cordova.version);
     document.getElementById('deviceready').classList.add('ready');
-
-
-    
-    
-    
-    
 
 }
 
@@ -84,5 +75,3 @@ hole.addEventListener('animationiteration', () => {
     hole.style.top = random + "px";
     counter++;
 });
-
-
