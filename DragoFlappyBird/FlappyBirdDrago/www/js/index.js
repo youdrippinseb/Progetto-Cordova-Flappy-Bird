@@ -35,7 +35,7 @@ function onDeviceReady() {
     // Cordova is now initialized. Have fun!
     console.log('Running cordova-' + cordova.platformId + '@' + cordova.version);
     document.getElementById('deviceready').classList.add('ready');
-
+    console.log(navigator.notification);
     DBMeter.start(function(dB){
         console.log(dB);
     });
@@ -59,13 +59,11 @@ setInterval(function(){
     var cTop = -(620-characterTop);
     if((characterTop>580)||((blockLeft<40)&&(blockLeft>-50)&&((cTop<holeTop)||(cTop>holeTop+210)))){
 
-        /* 
-        navigator.notification.alert(
-            'You are the winner!',  // message
-            alertDismissed,         // callback
-            'Game Over, you made ' + counter + 'point',            // title
-            'OK'                  // buttonName
-        );
+       
+        navigator.notification.beep(2);
+        navigator.vibrate(500);
+
+          /*
 
         cordova.plugins.notification.local.schedule({ 
             id: 1,
