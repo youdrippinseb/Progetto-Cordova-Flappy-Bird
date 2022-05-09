@@ -41,6 +41,12 @@ function onDeviceReady() {
     });
 
     activatemic();
+
+    /* cordova.plugins.notification.local.schedule({
+        title: 'Thanks for playing Flappy Bird / Drip Ent.',
+        trigger: { in: 20, unit: 'second' }
+    });
+    */
 }
 
 setInterval(function(){
@@ -52,6 +58,23 @@ setInterval(function(){
     var holeTop = parseInt(window.getComputedStyle(hole).getPropertyValue("top"));
     var cTop = -(620-characterTop);
     if((characterTop>580)||((blockLeft<40)&&(blockLeft>-50)&&((cTop<holeTop)||(cTop>holeTop+210)))){
+
+        /* 
+        navigator.notification.alert(
+            'You are the winner!',  // message
+            alertDismissed,         // callback
+            'Game Over, you made ' + counter + 'point',            // title
+            'OK'                  // buttonName
+        );
+
+        cordova.plugins.notification.local.schedule({ 
+            id: 1,
+            title: "Game Over",
+            text: "Your score is: "+counter,
+            foreground: true
+        });
+
+        */
         alert("Game over. Score: "+(counter-1));
         character.style.top = 100 + "px";
         counter=0;
