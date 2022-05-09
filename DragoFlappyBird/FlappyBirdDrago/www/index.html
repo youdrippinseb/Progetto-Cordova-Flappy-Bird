@@ -6,14 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Voice Flappy Bird</title>
     <link rel = "stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 </head>
     <body>
         <html lang="en" onclick="jump()"></html>
         <div id="game">
+            <style>
+                body  {
+                  background-image: url("img/bg.jpg");
+                  background-color: #cccccc;
+                }
+            </style>
             <div id="block"></div>
             <div id="hole"></div>
             <div id="character"></div>
         </div>
+        <br>
+        <br>
+        <div id="stats" class="badge badge-success mx-auto" style="width: 412px">
+            <h1> <span  id="jumpScore" onclick="activatemic"> 0 </span> </h1> <br>
+            <h5> Tap on score to activate mic </h5>
+        </div>
+
         <script src="cordova.js"></script>
         <script src="js/index.js"></script>
         

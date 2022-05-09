@@ -23,7 +23,7 @@
 
 
 document.addEventListener('deviceready', onDeviceReady, false);
-
+var jumpScore = document.getElementById("jumpScore");
 
 var block = document.getElementById("block");
 var hole = document.getElementById("hole");
@@ -36,6 +36,11 @@ function onDeviceReady() {
     console.log('Running cordova-' + cordova.platformId + '@' + cordova.version);
     document.getElementById('deviceready').classList.add('ready');
 
+    DBMeter.start(function(dB){
+        console.log(dB);
+    });
+
+    activatemic();
 }
 
 setInterval(function(){
@@ -46,10 +51,24 @@ setInterval(function(){
     var blockLeft = parseInt(window.getComputedStyle(block).getPropertyValue("left"));
     var holeTop = parseInt(window.getComputedStyle(hole).getPropertyValue("top"));
     var cTop = -(620-characterTop);
-    if((characterTop>570)||((blockLeft<20)&&(blockLeft>-50)&&((cTop<holeTop)||(cTop>holeTop+130)))){
+    if((characterTop>580)||((blockLeft<40)&&(blockLeft>-50)&&((cTop<holeTop)||(cTop>holeTop+210)))){
         alert("Game over. Score: "+(counter-1));
         character.style.top = 100 + "px";
         counter=0;
+
+        /* alert introdotta dal nuovo plugin
+        navigator.notification.alert(
+            //Messaggio da visualizzare
+            'Game over. Score: '+(counter-1),
+            // callback richiamata quando si chiude la finestra dell'alert
+            chiusuraAlert, //Obbligatorio
+            //Titolo della finestra che viene aperta
+            "Titolo Finestra",
+            //testo raffigurato sopra il nome del bottone di chiusura
+            'Chiudi'
+            );
+
+        */
     }
 },10);
 
@@ -67,7 +86,19 @@ function jump(){
             jumpCount=0;
         }
         jumpCount++;
+        jumpScore.innerHTML = counter;
     },10);
+}
+
+function activatemic(){
+    console.log("mic activated")
+    dbmeter().resume();
+    cordova.plugin.dbmeter.start(function(dB){
+        if(dB>20){
+            jump();
+            console.log(data + " dB");
+        }
+    });
 }
 
 hole.addEventListener('animationiteration', () => {
@@ -75,3 +106,5 @@ hole.addEventListener('animationiteration', () => {
     hole.style.top = random + "px";
     counter++;
 });
+
+
